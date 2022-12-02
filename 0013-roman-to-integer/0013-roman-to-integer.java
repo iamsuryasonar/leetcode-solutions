@@ -11,23 +11,25 @@ class Solution {
         SymbolToNum.put('M', 1000);
         
         
-        int IntegerValue = 0;
+        int ConvertedInteger = 0;
             
         for(int i = 0;i<s.length()-1;i++){
+            int currentValue = SymbolToNum.get(s.charAt(i));
+            int nextValue = SymbolToNum.get(s.charAt(i+1));
             
-            if(SymbolToNum.get(s.charAt(i))<SymbolToNum.get(s.charAt(i+1))){
+            if(currentValue < nextValue){
                 
-                IntegerValue = IntegerValue - SymbolToNum.get(s.charAt(i));
+                ConvertedInteger = ConvertedInteger - currentValue;
                 
             }else{
                 
-                IntegerValue = IntegerValue + SymbolToNum.get(s.charAt(i));
+                ConvertedInteger = ConvertedInteger + currentValue;
                 
             }
         }
         
-        IntegerValue = IntegerValue + SymbolToNum.get(s.charAt(s.length()-1));
+        ConvertedInteger = ConvertedInteger + SymbolToNum.get(s.charAt(s.length()-1));
             
-        return IntegerValue;    
+        return ConvertedInteger;    
     }
 }
